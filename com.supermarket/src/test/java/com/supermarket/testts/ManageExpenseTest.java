@@ -1,5 +1,6 @@
 package com.supermarket.testts;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.supermarket.base.Base;
@@ -37,8 +38,7 @@ public void verifyNewButton()
 	manageexpensepage= new ManageExpensePage(driver);
 	manageexpensepage.clickOnManageExpense();
 	manageexpensepage.clickOnExpenseCategory();
-	manageexpensepage.clickOnNewButton("purchases");
-	
+	manageexpensepage.clickOnNewButton("purchases");	
 }
 @Test
 public void verifyNewButtonReset()
@@ -58,8 +58,10 @@ public void verifySearchButtonByEnteringAnItem()
 	manageexpensepage= new ManageExpensePage(driver);
 	manageexpensepage.clickOnManageExpense();
 	manageexpensepage.clickOnExpenseCategory();
-	manageexpensepage.clickOnSearchButton("sale");
-}
-	
-		
+	manageexpensepage.clickOnSearchButton("purchases");  
+	String actualText=manageexpensepage.SearchItemsTextOfElement();
+	System.out.println(actualText);
+	String expectedText="Sales";
+	Assert.assertEquals(actualText, expectedText,"This TestCase has failed");
+}	
 }

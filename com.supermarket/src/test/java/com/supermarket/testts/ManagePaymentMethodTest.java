@@ -1,5 +1,6 @@
 package com.supermarket.testts;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.supermarket.base.Base;
@@ -9,13 +10,12 @@ import com.supermarket.utilities.ExcelRead;
 import com.supermarket.utilities.GeneralUtilities;
 import com.supermarket.utilities.PageUtilities;
 
-public class managePaymentMethodTest extends Base{
+public class ManagePaymentMethodTest extends Base{
 	LoginPage loginpage;
 	ManagePaymentMethodsPage managepaymentmethodspage;
 	GeneralUtilities generalutilities;
 	PageUtilities pageutilities;
 	ExcelRead excelread;
-
 @Test
 public void verifyManagePaymentMethod_PageisDisplayed()
 {
@@ -23,7 +23,7 @@ public void verifyManagePaymentMethod_PageisDisplayed()
 	loginpage.login();
 	managepaymentmethodspage=new ManagePaymentMethodsPage(driver);
 	managepaymentmethodspage.clickOnManagePayementMethod();
-	
+	Assert.assertTrue(managepaymentmethodspage.clickOnManagePayementMethod());
 }
 @Test
 public void verifyManagePaymentMethod_DetailsIsDisplayed()
@@ -33,10 +33,8 @@ public void verifyManagePaymentMethod_DetailsIsDisplayed()
 	managepaymentmethodspage=new ManagePaymentMethodsPage(driver);
 	managepaymentmethodspage.clickOnManagePayementMethod();	
 	managepaymentmethodspage.displaying_AllPaymentDetails();
-	System.out.println(managepaymentmethodspage.displaying_AllPaymentDetails());
-	
+	Assert.assertTrue(managepaymentmethodspage.displaying_AllPaymentDetails());	
 }
-	
 @Test
 public void verify_PaymentUpdate()
 {
@@ -50,16 +48,6 @@ public void verify_PaymentUpdate()
 	excelread.setExcelFiles("PaymentDetails", "Sheet1");
 	String title=excelread.getCellData(0,0);
 	String payment=excelread.getCellData(0,1);
-	managepaymentmethodspage.editPaymentDetailMethod(title, payment);  
-	 
-}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	managepaymentmethodspage.editPaymentDetailMethod(title, payment);  	 
+}	
 }

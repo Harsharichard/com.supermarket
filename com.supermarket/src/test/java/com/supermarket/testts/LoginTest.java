@@ -11,19 +11,14 @@ import com.supermarket.utilities.ScreenShots;
 
 public class LoginTest extends Base{
 	LoginPage loginpage;
-	ExcelRead excelread=new ExcelRead();
-	
-	
-	
+	ExcelRead excelread=new ExcelRead();	
 @Test(groups="smoke")
 public void verifyLogin()
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login();
-	//excelread.setExcelFiles("InvalidLogin", "inValidCredential");
-	excelread.setExcelFiles("Testing", "demo");
+	excelread.setExcelFiles("InvalidLogin", "inValidCredential");
 	String data=excelread.getCellData(0, 0);
-	
 }
 @Test(groups = "smoke")
 public void verrify_InvalidCredentialErrorMessage()
@@ -50,9 +45,7 @@ public void verify7rMartSuperMarketLogois_Displayed()
 public void verifyrememberMeCheckBox()
 {
 	loginpage=new LoginPage(driver);
-	loginpage.clickOnRememberMeCheckBox();	
-	//String expectedText="";
-	
+	Assert.assertTrue(loginpage.clickOnRememberMeCheckBox());	
 }
 @Test
 public void verifyTextOfSignInButton()
@@ -63,36 +56,36 @@ public void verifyTextOfSignInButton()
 	String actualText=loginpage.get_TextOfSignInButton();
 	System.out.println(actualText);
 	Assert.assertEquals(actualText, expectedText);
-	
-	
 }
 @Test
 public void verifyProfileNameTextisDisplayed()
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login();
-	String expectedText="Aadmin";
+	String expectedText="Admin";
 	String actualText=loginpage.profileNameText();
 	Assert.assertEquals(actualText, expectedText);
-	//ScreenShots screenshot=new ScreenShots();
-	//screenshot.takeScreenshots(driver,"screenshot");
-	
-	
 }
 @Test
-public void verifyManagePagesIsClickable()
+public void verifyManagePagesIsClickable()//fail
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login();
 	loginpage.clickOnManagePages();
+	loginpage.managePageAlertTextis_Displayed();
+	String actualText=loginpage.managePageAlertTextis_Displayed();
+	System.out.println("Actual Text:"+" "+actualText);
+	String expectedText="List Pages";
+	System.out.println("Expected Text:"+" "+expectedText);
+	Assert.assertEquals(expectedText, actualText);
 }
-
 @Test
-public void verifyAdmin()
+public void verifyAdminButtonis_Clickable()  
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login();
 	loginpage.clickAdmin();
+	Assert.assertTrue(loginpage.clickAdmin());
 }
 @Test
 public void verifyLogOutOption()
@@ -101,10 +94,13 @@ public void verifyLogOutOption()
 	loginpage.login();
 	loginpage.clickAdmin();
 	loginpage.clickOnLogOut();
-	
+	String actualText=loginpage.logoutAlertText_isDisplayed();
+	System.out.println("Actual Text:"+" "+actualText);
+	String expectedText="Sign in to start your session";
+	System.out.println("Expected Text:"+" "+expectedText);
+	Assert.assertEquals(expectedText, actualText);
 }
 }
-
 
 
 

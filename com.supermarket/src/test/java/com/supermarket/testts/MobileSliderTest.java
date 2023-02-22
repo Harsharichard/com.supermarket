@@ -17,11 +17,12 @@ public void verifyMobileSliderPageis_Displayed()
 	loginpage=new LoginPage(driver);
 	loginpage.login();
 	mobilesliderpage=new MobileSliderPage(driver);
-	//mobilesliderpage.clickOnMobileSliderPage();
-	Assert.assertTrue(mobilesliderpage.clickOnMobileSliderPage());
-	
-}
-	
+	mobilesliderpage.clickOnMobileSliderPage();
+	String actualText=mobilesliderpage.MobileSliderPageis_Displayable();
+	System.out.println(actualText);
+	String expectedText="List Mobile Sliders";
+	Assert.assertEquals(actualText, expectedText);
+}	
 @Test
 public void verifyAnItemCanBeDeleted()
 {
@@ -30,9 +31,7 @@ public void verifyAnItemCanBeDeleted()
 	mobilesliderpage=new MobileSliderPage(driver);
 	mobilesliderpage.clickOnMobileSliderPage();
 	mobilesliderpage.deleteAnItem();
-	
-}
-	
+}	
 @Test
 public void verifyWhetherAnItemCanBeDeactivated()
 {
@@ -44,11 +43,6 @@ public void verifyWhetherAnItemCanBeDeactivated()
 	String actualText=mobilesliderpage.deactivatingAnItem();
 	System.out.println(actualText);
 	String expectedText="Alert!";
-	Assert.assertEquals(actualText, expectedText,"This testcase has passed");
-	
-	
-}
-	
-	
-	
+	Assert.assertEquals(actualText, expectedText);
+}	
 }

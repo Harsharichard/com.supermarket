@@ -20,9 +20,10 @@ PageUtilities pageutilities;
 
 @FindBy(xpath = "(//a[@class='small-box-footer'])[10]")
 private WebElement manageUsers;
-
 @FindBy(xpath = "//h1[text()='List Users']")
 private WebElement listUserText;
+@FindBy(xpath = "//h1[@class='m-0 text-dark']")
+private WebElement manageuserAlert;
 
 public ManageUsersPage(WebDriver driver)            //constructor
 {
@@ -34,10 +35,14 @@ public void clickOnManageUsers()
 	{
 		manageUsers.click();
 	}
-public void deactive_User(String userName)
+public String manageUseris_Displayed()
+{
+	generalutilities= new GeneralUtilities(driver);
+	return generalutilities.get_TextOfElement(manageuserAlert);
+}
+public void deactive_User(String userName)  
 	{
 		pageutilities=new PageUtilities(driver);
-		
 		int i=0;
 		generalutilities= new GeneralUtilities(driver);
 		manageUsers.click();

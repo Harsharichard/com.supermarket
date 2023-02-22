@@ -72,19 +72,4 @@ public class ExtentReporter implements IReporter{
 	calendar.setTimeInMillis(millis);
 	return calendar.getTime();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

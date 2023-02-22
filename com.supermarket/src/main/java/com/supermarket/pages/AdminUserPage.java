@@ -17,7 +17,7 @@ WebDriver driver;
 GeneralUtilities generalutilities;
 PageUtilities pageutilities;
 
-@FindBy(xpath = "(//a[@class='small-box-footer'])[2]")
+@FindBy(xpath = "(//a[@class=' nav-link'])[13]")
 private WebElement adminUser;
 
 @FindBy(xpath="(//i[@class='fa fa-angle-double-down'])[1]")
@@ -40,47 +40,23 @@ public AdminUserPage(WebDriver driver)            //constructor
 	this.driver=driver;
 	PageFactory.initElements(driver,this);
 }
-public void clickOnAdminUser() {
-	//generalUtilities= new GeneralUtilities(driver);
+public Boolean clickOnAdminUser() {
+	generalutilities= new GeneralUtilities(driver);
 	adminUser.click();
+	return generalutilities.is_Displayed(adminUser);
 }
 
-public void clickOnPasswordOption()
+public Boolean clickOnPasswordOption()
 {
 	generalutilities= new GeneralUtilities(driver);
 	passwordOption.click();
-	
+	return generalutilities.is_Displayed(passwordOption);	
 }
-/*public void getPasswordText(String pass_word)
-{
-	//generalUtilities= new GeneralUtilities(driver);
-	//return generalUtilities.get_TextOfElement(passwordOption);
-	pageutilities=new PageUtilities(driver);
-	int i;
-	
-	generalutilities= new GeneralUtilities(driver);
-	passwordOption.click();
-	List<String>passwords=new ArrayList<String>();
-	passwords=generalutilities.get_TextOfElements("//table[@class='table table-bordered table-hover table-sm']");
-	for(i=0;i<passwords.size();i++)
-	{
-		if(pass_word.equals(passwords.get(i)))
-		{
-			i++;
-			break;
-		}
-	}
-	WebElement statusChangeButton=driver.findElement(By.xpath("//table[@class='table table-bordered table-hover table-sm']"));
-	pageutilities.scrollIntoView(statusChangeButton);
-}
-*/
 public String create_NewUser( String userName, String password, String userType)
 {
 	generalutilities=new GeneralUtilities(driver);
 	NewElement.click();
 	return generalutilities.get_TextOfElement(NewElement);
-	
-	
 }
 
 

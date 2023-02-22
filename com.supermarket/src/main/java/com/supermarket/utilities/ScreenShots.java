@@ -11,7 +11,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.FileHandler;
 
 public class ScreenShots {
-//TakeScreenshot is an interface
 	
 	TakesScreenshot screenshot;
 	public void takeScreenshots(WebDriver driver, String imageName)

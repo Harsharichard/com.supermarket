@@ -46,53 +46,43 @@ public class ManageExpensePage {
 	
 	@FindBy(xpath = "(//a[@class=\"btn btn-sm btn btn-primary btncss\"])[1]")
 	private WebElement editButton;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]")
+	private WebElement textOf1stRow;
 	
-	
-	public ManageExpensePage(WebDriver driver)
-	{
-		this.driver=driver;
-		PageFactory.initElements(driver,this);
-	}
-	public void clickOnManageExpense()
-	{
-		manageExpense.click();
-	}
-	public void clickOnExpenseCategory()
-	{
-		expenseCategoryRadioButton.click();
-	}
-	public void clickOnNewButton(String title)
-	{
-		newButton.click();
-		newTitle.sendKeys(title);
-		newSave.click();
-	}
-	
-	public void clickOnNewButtonReset(String title)
-	{
-		newButton.click();
-		newTitle.sendKeys(title);
-		newReset.click();
-	}
-	
-	public void clickOnSearchButton(String title)
-	{
-		searchButton.click();
-		searchTitle.sendKeys(title);
-		searchSearch.click();
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+public ManageExpensePage(WebDriver driver)
+{
+	this.driver=driver;
+	PageFactory.initElements(driver,this);
+}
+public void clickOnManageExpense()
+{
+	manageExpense.click();
+}
+public void clickOnExpenseCategory()
+{
+	expenseCategoryRadioButton.click();
+}
+public void clickOnNewButton(String title)
+{
+	newButton.click();
+	newTitle.sendKeys(title);
+	newSave.click();
+}
+public void clickOnNewButtonReset(String title)
+{
+	newButton.click();
+	newTitle.sendKeys(title);
+	newReset.click();
+}	
+public void clickOnSearchButton(String title)
+{
+	searchButton.click();
+	searchTitle.sendKeys(title);
+	searchSearch.click();
+}
+public String SearchItemsTextOfElement()
+{
+	generalutilities= new GeneralUtilities(driver);
+	return generalutilities.get_TextOfElement(textOf1stRow);
+}
 }

@@ -79,15 +79,8 @@ public void tearDown(ITestResult itestresult)
 		String testCaseName=itestresult.getName();
 		screenshot.takeScreenshots(driver, testCaseName);
 	}
-	//driver.close();
+	driver.quit();
 	}
 
-}
 
-/*@BeforeMethod
-public void setUpBrowser()
-{
-	String url=prop.getProperty("url");
-	String browser=prop.getProperty("browser");
-	initialize(browser,url);
-}*/
+}
