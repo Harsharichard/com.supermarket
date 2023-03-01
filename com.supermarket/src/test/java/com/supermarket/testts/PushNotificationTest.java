@@ -15,7 +15,7 @@ public class PushNotificationTest extends Base{
 	GeneralUtilities generalutilities;	
 	
 	@Test
-	public void verifypushNotificationAlert()
+	public void verifyWhetherUserIsAbleToEnterPushNotificationInformation()
 	{
 		loginpage=new LoginPage(driver);
 		loginpage.login();
@@ -23,8 +23,28 @@ public class PushNotificationTest extends Base{
 		pushnotificationpage.clickOnPushNotifiication();
 		Assert.assertTrue(pushnotificationpage.clickOnSend_Key("Job", "Sales"));
 	}
-	
-	
+	@Test
+	public void verifyIfUserIsAbleToResetInformationEnteredInTheTitleAndDescriptionColumn()
+	{
+		loginpage=new LoginPage(driver);
+		loginpage.login();
+		pushnotificationpage=new PushNotificationPage(driver);
+		pushnotificationpage.clickOnPushNotifiication();
+		pushnotificationpage.clickOnSend_Key("Job", "Sales");
+		Assert.assertTrue(pushnotificationpage.clickOnResetButton());
+	}
+	@Test
+	public void verifyWhetherHomeLinkIsReconnectingToTheCorrespondingPage()
+	{
+		loginpage=new LoginPage(driver);
+		loginpage.login();
+		pushnotificationpage=new PushNotificationPage(driver);
+		pushnotificationpage.clickOnPushNotifiication();
+		String actualText=pushnotificationpage.clickOnHomeLink();
+		System.out.println(actualText);
+		String expectedText="Admin";
+		Assert.assertEquals(actualText, expectedText);
+	}
 	
 	
 	

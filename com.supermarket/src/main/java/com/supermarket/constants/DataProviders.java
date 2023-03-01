@@ -10,6 +10,12 @@ public class DataProviders {
 		return new Object[][] {{"userName1","password1","staff"},{"anu","abcd","staff"},{"bismi","xyz","staff"}};
 	}
 	
+	@DataProvider(name="enterNameForSearch")
+	public Object[][] searchName()
+	{
+		return new Object[][] {{"namisha"}};
+	}
+	
 	
 	
 	

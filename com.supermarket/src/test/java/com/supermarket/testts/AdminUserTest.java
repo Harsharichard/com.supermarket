@@ -15,7 +15,7 @@ public class AdminUserTest extends Base{
 	GeneralUtilities generalutilities;
 	
 @Test(groups="smoke")
-public void verifyAdminUserIsClickable() 
+public void verifyIfTheUserisAbleToOpenAdminUserPage() 
 {
 	loginpage=new LoginPage(driver);
 	adminUserPage=new AdminUserPage(driver);
@@ -23,7 +23,7 @@ public void verifyAdminUserIsClickable()
 	Assert.assertTrue(adminUserPage.clickOnAdminUser());
 }	
 @Test(groups="sanity")
-public void verifyPasswordis_Displayed()
+public void verifyWhetherUserIsAbleToViewPasswordWhileClickingInThePasswordField()
 {
 	loginpage= new LoginPage(driver);
 	loginpage.login();
@@ -33,7 +33,7 @@ public void verifyPasswordis_Displayed()
 	Assert.assertTrue(adminUserPage.clickOnPasswordOption());
 }	
 @Test (dataProvider = "userCredentials",dataProviderClass=DataProviders.class)
-public void verify_newUserCreation(String userName, String password, String userType)
+public void verifyWhetherUserisAbleToCreateNewAdminUsers(String userName, String password, String userType)
 {
 	loginpage= new LoginPage(driver);
 	adminUserPage=new AdminUserPage(driver);
@@ -41,5 +41,19 @@ public void verify_newUserCreation(String userName, String password, String user
 	adminUserPage.clickOnAdminUser();
 	String user_Name=userName+GeneralUtilities.getTimeStamp();
 	adminUserPage.create_NewUser("user1","user1","Staff");
-}	
+}
+@Test
+public void verifyWhetherUserIsAbleToLockTheSecondAdminUserInTheTable()
+{
+	loginpage= new LoginPage(driver);
+	adminUserPage=new AdminUserPage(driver);
+	loginpage.login();
+	adminUserPage.clickOnAdminUser();
+	adminUserPage.lockingTheSecondAdminUser();
+	String actualText=adminUserPage.textOfAlertInTheLockButton();
+	System.out.println(actualText);
+	String expectedText="User Status Changed Successfully";
+	Assert.assertEquals(actualText,expectedText);
+	
+}
 }

@@ -9,7 +9,7 @@ public class Constants {
  
  public static final String expectedErrorMessage="Alert!";
 
- public static final String IMAGES_FILE_PATH=System.getProperty("user.dir")+"\\src\\main\\resources\\Images";
+ public static final String IMAGES_FILE_PATH=System.getProperty("user.dir")+"\\src\\main\\resources\\Image";
  
 }
 

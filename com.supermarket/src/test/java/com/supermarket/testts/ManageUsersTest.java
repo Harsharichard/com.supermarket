@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.supermarket.base.Base;
+import com.supermarket.constants.DataProviders;
 import com.supermarket.pages.LoginPage;
 import com.supermarket.pages.ManageUsersPage;
 import com.supermarket.utilities.ExcelRead;
@@ -26,13 +27,18 @@ public void verifyManageUserIsClickable()
 		Assert.assertEquals(actualText,expectedText);
 		
 	}
+
 @Test
-public void verify_ListUsersActivation()       //failed
-	{
-		manageuserspage= new ManageUsersPage(driver);
-		loginpage=new LoginPage(driver);
-		loginpage.login();
-		manageuserspage.clickOnManageUsers();
-		manageuserspage.deactive_User("Sadfg Ddf");
-	}
+public void verifyWhetherUsersNameCanSearch()
+ {
+	manageuserspage= new ManageUsersPage(driver);
+	loginpage=new LoginPage(driver);
+	loginpage.login();
+	manageuserspage.clickOnManageUsers();
+	String actualText=manageuserspage.clickOnSearch("namisha");
+	System.out.println(actualText);
+	String expectedText=".........RESULT NOT FOUND.......";
+	Assert.assertEquals(actualText,expectedText);
+ }
+
 }

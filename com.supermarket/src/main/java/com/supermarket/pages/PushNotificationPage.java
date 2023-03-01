@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.supermarket.utilities.GeneralUtilities;
+import com.supermarket.utilities.WaitUtility;
     
 public class PushNotificationPage {
 	
@@ -26,6 +27,8 @@ private WebElement resetButton;
 private WebElement homeLink;
 @FindBy (xpath = "//div[@class='alert alert-success alert-dismissible']")
 private WebElement alert;
+@FindBy(xpath = "//a[text()=' Admin']")
+private WebElement adminTextInHomePage;
 
 public PushNotificationPage(WebDriver driver)
 {
@@ -43,14 +46,18 @@ public boolean clickOnSend_Key(String ti, String des)
 	return generalutilities.is_Displayed(alert);
 }
 
-public void clickOnResetButton()
+public Boolean clickOnResetButton()
 {
+	generalutilities= new GeneralUtilities(driver);
 	resetButton.click();
+	return generalutilities.is_Enabled(resetButton);
 }
 
-public void clickOnHomeLink()
+public String clickOnHomeLink()
 {
+	generalutilities= new GeneralUtilities(driver);
 	homeLink.click();
+	return generalutilities.get_TextOfElement(adminTextInHomePage);
 }
 
 }

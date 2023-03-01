@@ -34,8 +34,12 @@ private WebElement password ;
 
 @FindBy(id ="user_type")
 private WebElement userType ;
+@FindBy(xpath = "(//a[@class='btn btn-sm btn btn-success btncss'])[2]")
+private WebElement lockSecondAdminUser;
+@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']//h5")
+private WebElement alertOfLockButton; 
 
-public AdminUserPage(WebDriver driver)            //constructor
+public AdminUserPage(WebDriver driver)            
 {
 	this.driver=driver;
 	PageFactory.initElements(driver,this);
@@ -58,9 +62,16 @@ public String create_NewUser( String userName, String password, String userType)
 	NewElement.click();
 	return generalutilities.get_TextOfElement(NewElement);
 }
-
-
-
+public void lockingTheSecondAdminUser()
+{
+	lockSecondAdminUser.click();
+}
+public String textOfAlertInTheLockButton()
+{
+	generalutilities=new GeneralUtilities(driver);
+	alertOfLockButton.click();
+	return generalutilities.get_TextOfElement(NewElement);
+}
 
 
 

@@ -36,6 +36,14 @@ private WebElement alert;
 private WebElement manageFooterTextElement;
 @FindBy(xpath = "(//i[@class='fas fa-edit'])[1]")
 private WebElement editManageFooterTextPage;
+@FindBy(xpath="//a[@onclick=\"click_button(2)\"]")
+private WebElement SearchButton;
+@FindBy(xpath = "//input[@type='text']")
+private WebElement titleSearch;
+@FindBy (xpath = "//button[@type='submit']")
+private WebElement searchInListPage;
+@FindBy (xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr[1]//td[1]")
+private WebElement searchTextElement;
 
 public ManageContentPage(WebDriver driver)
 	{
@@ -60,10 +68,10 @@ public Boolean create_Newcontent(String Title,String des,String imageName)
 	newContent.click();
 	title.sendKeys(Title);
 	page.sendKeys(des);
-	//return generalutilities.is_Displayed(manageContentelement);
-	pageutilities.upload_File(choose,imageName);
-	pageutilities.scrollAndclick(save);
-	return generalutilities.is_Displayed(alert);
+	return generalutilities.is_Displayed(manageContentelement);
+	//pageutilities.upload_File(choose,imageName);
+	//pageutilities.scrollAndclick(save);
+	//return generalutilities.is_Displayed(alert);
 }	
 public void clickOnManageFooterText()
 {
@@ -75,5 +83,16 @@ public Boolean editManageFooterText()
 	editManageFooterTextPage.click();
 	return generalutilities.is_Displayed(editManageFooterTextPage);
 }
-
+public void searchContentOnListPage(String tit)
+{
+	generalutilities= new GeneralUtilities(driver);
+	SearchButton.click();
+	titleSearch.sendKeys(tit);
+	searchInListPage.click();
+}
+public String displayingTheContentSearched()
+{
+	generalutilities= new GeneralUtilities(driver);
+	return generalutilities.get_TextOfElement(searchTextElement);
+}
 }

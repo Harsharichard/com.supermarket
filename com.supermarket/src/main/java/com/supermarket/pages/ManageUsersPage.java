@@ -24,8 +24,16 @@ private WebElement manageUsers;
 private WebElement listUserText;
 @FindBy(xpath = "//h1[@class='m-0 text-dark']")
 private WebElement manageuserAlert;
+@FindBy(xpath="//a[@class='btn btn-rounded btn-primary']")
+private WebElement searchButton;
+@FindBy(id = "un")
+private WebElement enterName;
+@FindBy(xpath="//button[@type='submit']")
+private WebElement entersubmit;
+@FindBy(xpath = "//span[@id='res']")
+private WebElement getTextAlert;
 
-public ManageUsersPage(WebDriver driver)            //constructor
+public ManageUsersPage(WebDriver driver)            
 {
 	this.driver=driver;
 	PageFactory.initElements(driver,this);
@@ -59,6 +67,15 @@ public void deactive_User(String userName)
 		WebElement statusChangeButton=driver.findElement(By.xpath("//table[@class='table table-bordered table-hover table-sm']"));
 		pageutilities.scrollIntoView(statusChangeButton);
 	}
+
+public String clickOnSearch(String nam)
+{
+	generalutilities= new GeneralUtilities(driver);
+	searchButton.click();
+	enterName.sendKeys(nam);
+	entersubmit.click();
+	return generalutilities.get_TextOfElement(getTextAlert);
+}
 	
 }
 

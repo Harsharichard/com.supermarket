@@ -11,6 +11,7 @@ import com.supermarket.utilities.GeneralUtilities;
 public class ManageContentTest extends Base {
 ManageContentPage managecontentpage;
 LoginPage loginpage;
+GeneralUtilities generalutilities;
 
 @Test
 public void verify_ManagePageis_Displayed()
@@ -43,6 +44,21 @@ public void create_Newcontent()
 	managecontentpage.clickOnManageContent();
 	managecontentpage.clickOnManagePage();
 	managecontentpage.create_Newcontent("Tour", "Ponmudi", "1");
-	Assert.assertTrue(managecontentpage.create_Newcontent(contentTitle,"Travel Destination"+GeneralUtilities.getTimeStamp(),"TravelIMage"));
+	Assert.assertTrue(managecontentpage.create_Newcontent(contentTitle,"Travel Destination"+GeneralUtilities.getTimeStamp(),"travelImage"));
 }
+@Test
+public void verifyWhetherUserIsAbleToSearchContentInListPage()
+{
+	loginpage= new LoginPage(driver);
+	managecontentpage=new ManageContentPage(driver);
+	loginpage.login();
+	managecontentpage.clickOnManageContent();
+	managecontentpage.clickOnManagePage();
+	managecontentpage.searchContentOnListPage("food items");
+	String actualText=managecontentpage.displayingTheContentSearched();
+	System.out.println(actualText);
+	String expectedText="food items";
+	Assert.assertEquals(actualText,expectedText);
+}
+
 }

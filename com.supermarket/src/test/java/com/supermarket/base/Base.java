@@ -54,7 +54,6 @@ public class Base {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(WaitUtility.IMPLICIT_WAIT));
 
 	}
-	// change to false when crossbrowser testing is take place
 @BeforeMethod(enabled = true,alwaysRun = true)
 	public void setUpBrowser()
 	{
@@ -62,11 +61,9 @@ public class Base {
 		String browser=prop.getProperty("browser");
 		initialize(browser,url);	
 	}
-
-// change to true when crossbrowser takeplace enabled=true
 @Parameters("browser")	
 @BeforeMethod(enabled = false,alwaysRun = true)
-public void setUpCrossBrowser(String browser)// browser is coming from cong.proper
+public void setUpCrossBrowser(String browser)
 {
 	String url=prop.getProperty("url");
 	initialize(browser,url);
@@ -79,7 +76,7 @@ public void tearDown(ITestResult itestresult)
 		String testCaseName=itestresult.getName();
 		screenshot.takeScreenshots(driver, testCaseName);
 	}
-	driver.quit();
+	//driver.quit();
 	}
 
 

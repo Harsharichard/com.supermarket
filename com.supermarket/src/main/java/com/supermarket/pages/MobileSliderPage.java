@@ -29,6 +29,8 @@ private WebElement activeButton ;
 private WebElement alertElement;
 @FindBy(xpath="//h1[@class='m-0 text-dark']")
 private WebElement sliderpageAlert;
+@FindBy(id = "cat_id")
+private WebElement groceryCategory;
 
 public MobileSliderPage(WebDriver driver)            
 {
@@ -59,5 +61,14 @@ public String deactivatingAnItem() // name the item
 	generalutilities=new GeneralUtilities(driver);
 	activeButton.click();
 	return generalutilities.get_TextOfElement(alertElement);
+}
+public Boolean createNewContent(String categ, String imageName)
+{
+	generalutilities=new GeneralUtilities(driver);
+	pageutilities=new PageUtilities(driver);
+	groceryCategory.click();
+	pageutilities.upload_File(null, imageName);
+	return generalutilities.is_Displayed(mobileslider);
+	
 }
 }

@@ -13,35 +13,34 @@ ManageExpensePage manageexpensepage;
 LoginPage loginpage;
 	
 @Test
-public void verifyManageExpense()
-{
-loginpage=new LoginPage(driver);
-loginpage.login();
-manageexpensepage= new ManageExpensePage(driver);
-manageexpensepage.clickOnManageExpense();
-}
-	
-@Test
-public void verifyExpenseCategory()
+public void verifyWhetherAnUserIsAbleToOpenExpenseCategoryPage()
 {
 loginpage=new LoginPage(driver);
 loginpage.login();
 manageexpensepage= new ManageExpensePage(driver);
 manageexpensepage.clickOnManageExpense();
 manageexpensepage.clickOnExpenseCategory();
+String actualText=manageexpensepage.textOfExpenseCategory();
+System.out.println(actualText);
+String expectedText="Expense Category";
+Assert.assertEquals(actualText, expectedText);
 }
 @Test	
-public void verifyNewButton()
+public void verifyWhetherAnUserCanEnterTheTitleOfTheExpenseAndSavetheExpense()
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login();
 	manageexpensepage= new ManageExpensePage(driver);
 	manageexpensepage.clickOnManageExpense();
 	manageexpensepage.clickOnExpenseCategory();
-	manageexpensepage.clickOnNewButton("purchases");	
+	manageexpensepage.clickOnNewButton("TravelExpensesss");
+	String actualText=manageexpensepage.alertTextAfterSavingTheExpense();
+	System.out.println(actualText);
+	String expectedText="Alert!";
+	Assert.assertEquals(actualText, expectedText);
 }
 @Test
-public void verifyNewButtonReset()
+public void verifyWhetherUserIsAbleToResetTheExpenseEnteredInTheExpenseCategoryPage()
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login();
@@ -49,9 +48,13 @@ public void verifyNewButtonReset()
 	manageexpensepage.clickOnManageExpense();
 	manageexpensepage.clickOnExpenseCategory();
 	manageexpensepage.clickOnNewButtonReset("purchase");
+	String actualText=manageexpensepage.textOfExpenseCategory();
+	System.out.println(actualText);
+	String expectedText="Expense Category";
+	Assert.assertEquals(actualText, expectedText);
 }
 @Test	
-public void verifySearchButtonByEnteringAnItem()
+public void verifyWhetherUserIsAbleToSearchAnItemOfTheExpenseEnterdInTheExpenseCategoryPage()
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login();
@@ -63,5 +66,15 @@ public void verifySearchButtonByEnteringAnItem()
 	System.out.println(actualText);
 	String expectedText="Sales";
 	Assert.assertEquals(actualText, expectedText,"This TestCase has failed");
-}	
+}
+@Test
+public void verifyWhetherAnExpeneCanBeDeleted()
+{
+	loginpage=new LoginPage(driver);
+	loginpage.login();
+	manageexpensepage= new ManageExpensePage(driver);
+	manageexpensepage.clickOnManageExpense();
+	manageexpensepage.clickOnExpenseCategory();
+	manageexpensepage.deleteAnExpense();
+}
 }

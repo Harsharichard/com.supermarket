@@ -50,7 +50,6 @@ WebDriver driver;
 	}
 	return textData;
 	}
-	
 	public static  String getTimeStamp()
 	{
 		String timeStamp = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss").format(new Date());
