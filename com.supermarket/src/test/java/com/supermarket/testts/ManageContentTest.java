@@ -7,11 +7,13 @@ import com.supermarket.base.Base;
 import com.supermarket.pages.LoginPage;
 import com.supermarket.pages.ManageContentPage;
 import com.supermarket.utilities.GeneralUtilities;
+import com.supermarket.utilities.PageUtilities;
 
 public class ManageContentTest extends Base {
 ManageContentPage managecontentpage;
 LoginPage loginpage;
 GeneralUtilities generalutilities;
+PageUtilities pageutilities;
 
 @Test
 public void verify_ManagePageis_Displayed()
@@ -45,6 +47,8 @@ public void create_Newcontent()
 	managecontentpage.clickOnManagePage();
 	managecontentpage.create_Newcontent("Tour", "Ponmudi", "1");
 	Assert.assertTrue(managecontentpage.create_Newcontent(contentTitle,"Travel Destination"+GeneralUtilities.getTimeStamp(),"travelImage"));
+	
+	
 }
 @Test
 public void verifyWhetherUserIsAbleToSearchContentInListPage()

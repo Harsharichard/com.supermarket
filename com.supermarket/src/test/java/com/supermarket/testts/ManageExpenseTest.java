@@ -76,5 +76,6 @@ public void verifyWhetherAnExpeneCanBeDeleted()
 	manageexpensepage.clickOnManageExpense();
 	manageexpensepage.clickOnExpenseCategory();
 	manageexpensepage.deleteAnExpense();
+	Assert.assertTrue(manageexpensepage.deleteAnExpense());
 }
 }

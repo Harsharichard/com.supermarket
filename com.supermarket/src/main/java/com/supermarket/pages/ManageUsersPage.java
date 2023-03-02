@@ -11,12 +11,14 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.supermarket.utilities.GeneralUtilities;
 import com.supermarket.utilities.PageUtilities;
+import com.supermarket.utilities.WaitUtility;
 
 public class ManageUsersPage 
 {
 WebDriver driver;
 GeneralUtilities generalutilities;
 PageUtilities pageutilities;
+WaitUtility waitutility;
 
 @FindBy(xpath = "(//a[@class='small-box-footer'])[10]")
 private WebElement manageUsers;
@@ -74,6 +76,8 @@ public String clickOnSearch(String nam)
 	searchButton.click();
 	enterName.sendKeys(nam);
 	entersubmit.click();
+	waitutility =new WaitUtility(driver);
+	waitutility.wait_ForElementToBeVisible(getTextAlert);;
 	return generalutilities.get_TextOfElement(getTextAlert);
 }
 	

@@ -49,5 +49,9 @@ public void verify_PaymentUpdate()
 	String title=excelread.getCellData(0,0);
 	String payment=excelread.getCellData(0,1);
 	managepaymentmethodspage.editPaymentDetailMethod(title, payment);  	 
+	String actualText=managepaymentmethodspage.clickOnUpdateButton();
+	System.out.println(actualText);
+	String expectedText="Alert!";
+	Assert.assertEquals(actualText, expectedText);
 }	
 }

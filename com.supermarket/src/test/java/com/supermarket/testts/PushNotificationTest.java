@@ -15,7 +15,7 @@ public class PushNotificationTest extends Base{
 	GeneralUtilities generalutilities;	
 	
 	@Test
-	public void verifyWhetherUserIsAbleToEnterPushNotificationInformation()
+	public void verifyIfTheUserIsAbleToEnterPushNotificationInformation()
 	{
 		loginpage=new LoginPage(driver);
 		loginpage.login();
@@ -34,7 +34,7 @@ public class PushNotificationTest extends Base{
 		Assert.assertTrue(pushnotificationpage.clickOnResetButton());
 	}
 	@Test
-	public void verifyWhetherHomeLinkIsReconnectingToTheCorrespondingPage()
+	public void verifyIftheHomeLinkInNotificationPageIsRedirectingToTheHomePage()
 	{
 		loginpage=new LoginPage(driver);
 		loginpage.login();

@@ -23,6 +23,10 @@ private WebElement editPaymentDetail;
 private WebElement title;
 @FindBy(id ="limit")
 private WebElement payLimit;
+@FindBy(xpath="(//button[@type='submit'])[2]")
+private WebElement updateButton;
+@FindBy(xpath="//h5[text()=' Alert!']") 
+private WebElement updateAlert;
 	
 public ManagePaymentMethodsPage(WebDriver driver)
 {
@@ -53,6 +57,12 @@ public void editPaymentDetailMethod(String cardTitle, String limit)
 {
 	title.sendKeys(cardTitle);
 	payLimit.sendKeys(limit);
+	
 }
-
+public String clickOnUpdateButton()
+{
+	generalutilities=new GeneralUtilities(driver);
+	updateButton.click();
+	 return generalutilities.get_TextOfElement(updateAlert);	
+}
 }

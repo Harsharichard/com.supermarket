@@ -56,11 +56,11 @@ public Boolean clickOnPasswordOption()
 	passwordOption.click();
 	return generalutilities.is_Displayed(passwordOption);	
 }
-public String create_NewUser( String userName, String password, String userType)
+public Boolean create_NewUser( String userName, String password, String userType)
 {
 	generalutilities=new GeneralUtilities(driver);
 	NewElement.click();
-	return generalutilities.get_TextOfElement(NewElement);
+	return generalutilities.is_Displayed(NewElement);
 }
 public void lockingTheSecondAdminUser()
 {

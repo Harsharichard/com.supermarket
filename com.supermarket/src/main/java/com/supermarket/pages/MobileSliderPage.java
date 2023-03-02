@@ -21,8 +21,8 @@ private WebElement mobileslider;
 private WebElement newButton ;		
 @FindBy(xpath = "(//a[@class='btn btn-sm btn btn-danger btncss'])[1]")
 private WebElement deleteAnItem ;
-@FindBy(xpath="(//i[@class='fas fa-trash-alt'])[1]")
-private WebElement deleteFirstItem;
+//@FindBy(xpath="(//i[@class='fas fa-trash-alt'])[1]")
+//private WebElement deleteFirstItem;
 @FindBy(xpath = "(//a[@role='button'])[1]")
 private WebElement activeButton ;	
 @FindBy(xpath="//h5[text()=' Alert!']")
@@ -50,13 +50,13 @@ public String MobileSliderPageis_Displayable()
 	return generalutilities.get_TextOfElement(sliderpageAlert);
 }
 	
-public String deleteAnItem()  
+public Boolean deleteAnItem()  
 {
 	generalutilities=new GeneralUtilities(driver);
-	deleteFirstItem.click();
-	return generalutilities.get_TextOfElement(deleteFirstItem);
+	deleteAnItem.click();
+	return generalutilities.is_Selected(deleteAnItem);
 }
-public String deactivatingAnItem() // name the item
+public String deactivatingAnItem() 
 {
 	generalutilities=new GeneralUtilities(driver);
 	activeButton.click();

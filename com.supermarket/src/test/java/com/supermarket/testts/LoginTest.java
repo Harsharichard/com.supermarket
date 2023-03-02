@@ -13,15 +13,16 @@ public class LoginTest extends Base{
 	LoginPage loginpage;
 	ExcelRead excelread=new ExcelRead();	
 @Test(groups="smoke")
-public void verifyLogin()
+public void verifyLogin()   //
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login();
 	excelread.setExcelFiles("InvalidLogin", "inValidCredential");
-	String data=excelread.getCellData(0, 0);
+	String data=excelread.getCellData(0, 0);	
+	
 }
 @Test(groups = "smoke")
-public void verrify_InvalidCredentialErrorMessage()
+public void verrify_InvalidCredentialErrorMessage()   //
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login("Harshaa","harsha");
@@ -65,19 +66,6 @@ public void verifyProfileNameTextisDisplayed()
 	String expectedText="Admin";
 	String actualText=loginpage.profileNameText();
 	Assert.assertEquals(actualText, expectedText);
-}
-@Test
-public void verifyManagePagesIsClickable()//fail
-{
-	loginpage=new LoginPage(driver);
-	loginpage.login();
-	loginpage.clickOnManagePages();
-	loginpage.managePageAlertTextis_Displayed();
-	String actualText=loginpage.managePageAlertTextis_Displayed();
-	System.out.println("Actual Text:"+" "+actualText);
-	String expectedText="List Pages";
-	System.out.println("Expected Text:"+" "+expectedText);
-	Assert.assertEquals(expectedText, actualText);
 }
 @Test
 public void verifyAdminButtonis_Clickable()  

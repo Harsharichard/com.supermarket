@@ -76,7 +76,7 @@ public void tearDown(ITestResult itestresult)
 		String testCaseName=itestresult.getName();
 		screenshot.takeScreenshots(driver, testCaseName);
 	}
-	//driver.quit();
+	driver.quit();
 	}
 
 

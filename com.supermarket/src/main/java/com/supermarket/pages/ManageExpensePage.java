@@ -91,12 +91,14 @@ public String alertTextAfterSavingTheExpense()
 	generalutilities= new GeneralUtilities(driver);
 	return generalutilities.get_TextOfElement(alertTextAfterSavingTheExpense);
 }
-public void deleteAnExpense ()
+public Boolean deleteAnExpense ()
 {
+	generalutilities= new GeneralUtilities(driver);
 	pageutilities=new PageUtilities(driver);
 	deleteButton.click();
 	String a=driver.switchTo().alert().getText();
 	System.out.println(a);
 	driver.switchTo().alert().dismiss();
+	return generalutilities.is_Displayed(textOf1stRow);
 }
 }

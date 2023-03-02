@@ -12,6 +12,7 @@ public class PushNotificationPage {
 	
 WebDriver driver;
 GeneralUtilities generalutilities;
+WaitUtility waitutility;
 
 @FindBy (xpath = "//i[@class='nav-icon fas fa-fas fa-bell']")
 private WebElement pushNotificationElement;
@@ -43,6 +44,8 @@ public boolean clickOnSend_Key(String ti, String des)
 {	
 	generalutilities =new GeneralUtilities(driver);
 	title.sendKeys(ti);description.sendKeys(des);sendButton.click();
+	waitutility =new WaitUtility(driver);
+	waitutility.wait_ForElementToBeVisible(alert);
 	return generalutilities.is_Displayed(alert);
 }
 

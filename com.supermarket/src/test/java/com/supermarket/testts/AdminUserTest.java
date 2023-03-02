@@ -40,7 +40,7 @@ public void verifyWhetherUserisAbleToCreateNewAdminUsers(String userName, String
 	loginpage.login();
 	adminUserPage.clickOnAdminUser();
 	String user_Name=userName+GeneralUtilities.getTimeStamp();
-	adminUserPage.create_NewUser("user1","user1","Staff");
+	Assert.assertTrue(adminUserPage.create_NewUser("user1","user1","Staff"));
 }
 @Test
 public void verifyWhetherUserIsAbleToLockTheSecondAdminUserInTheTable()

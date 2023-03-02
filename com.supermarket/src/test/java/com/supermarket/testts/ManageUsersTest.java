@@ -15,7 +15,7 @@ public class ManageUsersTest extends Base{
 	LoginPage loginpage;
 	
 @Test
-public void verifyManageUserIsClickable()
+public void verifyManageUserPageIsClickable()
 	{
 		loginpage=new LoginPage(driver);
 		loginpage.login();
@@ -29,7 +29,7 @@ public void verifyManageUserIsClickable()
 	}
 
 @Test
-public void verifyWhetherUsersNameCanSearch()
+public void verifyWhetheraNonUserNameCanBeSearched()
  {
 	manageuserspage= new ManageUsersPage(driver);
 	loginpage=new LoginPage(driver);

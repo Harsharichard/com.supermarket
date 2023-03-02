@@ -24,16 +24,16 @@ public void verifyMobileSliderPageis_Displayed()
 	Assert.assertEquals(actualText, expectedText);
 }	
 @Test
-public void verifyAnItemCanBeDeleted() // fail
+public void verifyAnItemCanBeDeleted() 
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login();
 	mobilesliderpage=new MobileSliderPage(driver);
 	mobilesliderpage.clickOnMobileSliderPage();
-	mobilesliderpage.deleteAnItem();
+	Assert.assertTrue(mobilesliderpage.deleteAnItem());
 }	
 @Test
-public void verifyWhetherAnItemCanBeDeactivated()
+public void verifyItemCanBeDeactivatedorNot()
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login();
@@ -46,7 +46,7 @@ public void verifyWhetherAnItemCanBeDeactivated()
 	Assert.assertEquals(actualText, expectedText);
 }
 @Test
-public void verifyIfUserisAbleToEnterNewSlidersInformation()  //fail
+public void verifyIfUserisAbleToEnterNewSlidersInformation()  
 {
 	loginpage=new LoginPage(driver);
 	loginpage.login();

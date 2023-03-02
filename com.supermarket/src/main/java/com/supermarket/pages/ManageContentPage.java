@@ -30,6 +30,7 @@ private WebElement page ;
 private WebElement choose ;
 @FindBy(xpath="//button[text()='Save']")
 private WebElement save;
+//button[@type='submit']
 @FindBy(xpath="//i[@class='icon fas fa-check']")
 private WebElement alert;
 @FindBy(xpath="//a[@class='active nav-link']")
@@ -68,10 +69,11 @@ public Boolean create_Newcontent(String Title,String des,String imageName)
 	newContent.click();
 	title.sendKeys(Title);
 	page.sendKeys(des);
-	return generalutilities.is_Displayed(manageContentelement);
-	//pageutilities.upload_File(choose,imageName);
-	//pageutilities.scrollAndclick(save);
-	//return generalutilities.is_Displayed(alert);
+	pageutilities.upload_File(choose,imageName);
+	pageutilities.scrollAndclick(save);
+	save.click();
+	return generalutilities.is_Displayed(alert);
+	//return generalutilities.is_Displayed(manageContentelement);
 }	
 public void clickOnManageFooterText()
 {
